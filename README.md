@@ -1,42 +1,35 @@
-# Scoop Bucket Template
+# scoop-bucket
 
-<!-- Uncomment the following line after replacing placeholders -->
-<!-- [![Tests](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml) [![Excavator](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml) -->
+[![Tests](https://github.com/starxjys/scoop-bucket/actions/workflows/ci.yml/badge.svg)](https://github.com/starxjys/scoop-bucket/actions/workflows/ci.yml)
+[![Excavator](https://github.com/starxjys/scoop-bucket/actions/workflows/excavator.yml/badge.svg)](https://github.com/starxjys/scoop-bucket/actions/workflows/excavator.yml)
 
-Template bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
+个人自用的 [Scoop](https://scoop.sh) 软件仓库（bucket），基于官方
+[ScoopInstaller/BucketTemplate](https://github.com/ScoopInstaller/BucketTemplate) 维护。
+仓库添加 `scoop-bucket` topic 后可被 [scoop.sh](https://scoop.sh) 索引收录。
 
-## How do I use this template?
+## 仓库中的软件
 
-1. Generate your own copy of this repository with the "Use this template"
-   button.
-2. Allow all GitHub Actions:
-   - Navigate to `Settings` - `Actions` - `General` - `Actions permissions`.
-   - Select `Allow all actions and reusable workflows`.
-   - Then `Save`.
-3. Allow writing to the repository from within GitHub Actions:
-   - Navigate to `Settings` - `Actions` - `General` - `Workflow permissions`.
-   - Select `Read and write permissions`.
-   - Then `Save`.
-4. Document the bucket in `README.md`.
-5. Replace the placeholder repository string in `bin/auto-pr.ps1`.
-6. Create new manifests by copying `bucket/app-name.json.template` to
-   `bucket/<app-name>.json`.
-7. Commit and push changes.
-8. If you'd like your bucket to be indexed on `https://scoop.sh`, add the
-   topic `scoop-bucket` to your repository.
+| 软件 | manifest | 说明 | 自动更新 |
+| --- | --- | --- | --- |
+| ikuai-cli | [ikuai-cli.json](bucket/ikuai-cli.json) | 爱快路由器命令行工具（网络/VPN/防火墙等） | ✅ checkver + autoupdate |
+| Firewall App Blocker | [fab.json](bucket/fab.json) | 易于使用的 Windows 防火墙工具 | ✅ checkver + autoupdate |
+| 小丸工具箱 | [xiaowan.json](bucket/xiaowan.json) | 音视频处理工具（x264/ffmpeg 图形界面） | ❌ 静态版本（官网无版本信息源） |
 
-## How do I install these manifests?
-
-After manifests have been committed and pushed, run the following:
+## 安装
 
 ```pwsh
-scoop bucket add <bucketname> https://github.com/<username>/<bucketname>
-scoop install <bucketname>/<manifestname>
+scoop bucket add starxjys https://github.com/starxjys/scoop-bucket
+scoop install starxjys/ikuai-cli
 ```
 
-## How do I contribute new manifests?
+## 添加新 manifest
 
-To make a new manifest contribution, please read the [Contributing
-Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md)
-and [App Manifests](https://github.com/ScoopInstaller/Scoop/wiki/App-Manifests)
-wiki page.
+复制 `bucket/app-name.json.template` 为 `bucket/<app-name>.json`，按
+[App Manifests](https://github.com/ScoopInstaller/Scoop/wiki/App-Manifests) 规范填写，
+提交并推送即可。仓库内置 [Excavator](.github/workflows/excavator.yml) 每 4 小时自动
+检查各 manifest 的上游新版本并更新版本号、下载地址与校验和（需要仓库 Actions 权限为
+"Read and write"）。
+
+## 贡献 manifest
+
+请参考 [Contributing Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md)。
