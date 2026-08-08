@@ -14,6 +14,7 @@
 | ikuai-cli | [ikuai-cli.json](bucket/ikuai-cli.json) | 爱快路由器命令行工具（网络/VPN/防火墙等） | ✅ checkver + autoupdate |
 | Firewall App Blocker | [fab.json](bucket/fab.json) | 易于使用的 Windows 防火墙工具 | ✅ checkver + autoupdate |
 | 小丸工具箱 | [xiaowan.json](bucket/xiaowan.json) | 音视频处理工具（x264/ffmpeg 图形界面） | ❌ 静态版本（官网无版本信息源） |
+| Herdr | [Herdr.json](bucket/Herdr.json) | 终端工作区管理器（AI 编码 agent 用，Windows 预览版） | ✅ checkver + autoupdate |
 
 ## 安装
 
