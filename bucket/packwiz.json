@@ -1,0 +1,28 @@
+{
+    "version": "dfd8b68",
+    "description": "packwiz — 用 git 友好的 TOML 格式创建和分发 Minecraft 整合包的命令行工具，支持 CurseForge / Modrinth 自动更新",
+    "homepage": "https://github.com/packwiz/packwiz",
+    "license": "MIT",
+    "notes": "滚动发布：版本号为 packwiz 官方 main 分支最新提交的短 SHA，二进制由 starxjys/packwiz 仓库的 nightly-build workflow 从官方源码自动构建（CGO_ENABLED=0，参数与官方 CI 一致）。",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/starxjys/packwiz/releases/download/nightly-dfd8b68/packwiz.exe",
+            "hash": "c35b767925030d8964c7fff87c30e7c8c6ec4efb38e42c4bf08b4282a6cd3baa"
+        }
+    },
+    "bin": "packwiz.exe",
+    "checkver": {
+        "github": "https://github.com/starxjys/packwiz",
+        "regex": "nightly-([a-f0-9]{7})"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/starxjys/packwiz/releases/download/nightly-$version/packwiz.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}
